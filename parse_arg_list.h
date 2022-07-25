@@ -18,5 +18,38 @@
 #ifndef UPDATE_ALTERNATIVES_PARSE_ARG_LIST_H__
 #define UPDATE_ALTERNATIVES_PARSE_ARG_LIST_H__
 
+/// 参数项
+typedef struct
+{
+    char *arg;      ///< 参数标识
+    char **values;  ///< 参数值
+} ArgItem;
 
-#endif // UPDATE_ALTERNATIVES_PARSE_ARG_LIST_H__
+
+/**
+ * @brief new一个 ArgItem 对象
+ * @return 如果一切正常，将返回一个新的 ArgItem 对象
+ */
+ArgItem *ua_newArgItem();
+
+/**
+ * @brief 删除 ArgItem 对象
+ * @param[in,out] item ArgItem 对象指针
+ */
+void ua_deleteArgItem(ArgItem *item);
+
+/**
+ * @brief 设置参数标识
+ * @param[out] item ArgItem 对象指针
+ * @param[in] sign 参数标识
+ */
+void ua_setArgSign(ArgItem *item, const char *sign);
+
+/**
+ * @brief 设置参数值
+ * @param[out] item ArgItem 对象指针
+ * @param[in] value 参数值
+ */
+void ua_setAddValues(ArgItem *item, const char *value);
+
+#endif  // UPDATE_ALTERNATIVES_PARSE_ARG_LIST_H__
