@@ -18,6 +18,9 @@
 #ifndef UPDATE_ALTERNATIVES_PARSE_ARG_LIST_H__
 #define UPDATE_ALTERNATIVES_PARSE_ARG_LIST_H__
 
+#include <stdbool.h>
+#include <stddef.h>
+
 /// 参数项
 typedef struct
 {
@@ -49,7 +52,12 @@ void ua_setArgSign(ArgItem *item, const char *sign);
  * @brief 设置参数值
  * @param[out] item ArgItem 对象指针
  * @param[in] value 参数值
+ * @retval true 添加参数成功
+ * @retval false 添加参数失败
  */
-void ua_setAddValues(ArgItem *item, const char *value);
+bool ua_addArgValue(ArgItem *item, const char *value);
+
+/// 获取参数值的数量
+inline size_t us_getArgValueSize(const ArgItem *item);
 
 #endif  // UPDATE_ALTERNATIVES_PARSE_ARG_LIST_H__
